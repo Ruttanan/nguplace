@@ -1,0 +1,56 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+icon: src/assets/icon.png
+micros:
+#  - name: rPlace
+#    src: .
+#    engine: python3.9
+#    primary: true
+#    include:
+#      - main.py
+#      - gunicorn.conf.py
+#      - src/
+#    run: gunicorn main:app
+#    dev: uvicorn main:app --reload
+#    public_routes:
+#      - '/interactions'
+#    presets:
+#      env:
+#      - name: START
+#      - name: PASS
+#      - name: ID
+#      - name: KEY
+#      - name: TOKEN
+#      - name: LOG
+#      - name: DB
+#      - name: MAIN
+  - name: serve
+    src: .
+    engine: python3.9
+    include:
+      - main2.py
+      - src/server.py
+      - src/utils/
+    run: uvicorn main2:app --log-level warning
+    dev: uvicorn main2:app --reload
+    presets:
+      env:
+      - name: START
+      - name: DB
+      - name: GLOBAL
+      - name: LOCAL
+      - name: HOUR
+      - name: DAY
+      - name: WEEK
+      - name: TOKEN
+    actions:
+      - id: 'check'
+        name: 'Check'
+        description: 'Checks for logs'
+        trigger: 'schedule'
+        default_interval: '* * * * *'
+      - id: 'snap'
+        name: 'Snapshot'
+        description: 'Takes global canvas snapshots'
+        trigger: 'schedule'
+        default_interval: '0 * * * *'

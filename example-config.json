@@ -1,0 +1,18 @@
+{
+  "START" : "123",
+  "PASS" : "1234",
+  "ID" : "",
+  "KEY" : "",
+  "TOKEN" : "",
+  "LOG" : "",
+  "DB" : "",
+  "MAIN" : "",
+  "GLOBAL" : "",
+  "LOCAL" : "",
+  "HOUR" : "",
+  "DAY" : "",
+  "WEEK" : "",
+  "SALT" : "",
+  "SALT2" : "",
+  "SALT3" : ""
+}
